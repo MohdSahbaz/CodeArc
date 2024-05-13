@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CodeArc</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        padding: 30px 50px;
+        background-color: rgb(8, 75, 100);
+      }
+      .header {
+        background: linear-gradient(#0a2d42, #6c446c);
+        border-bottom: 1px solid rgb(255, 255, 255);
+        border-radius: 0.5rem;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+        color: white;
+      }
+      .logo {
+        display: flex;
+        padding: 10px 50px 0px 50px;
+        justify-content: center;
+      }
+      .logo img {
+        width: 80px;
+      }
+      .logo h1 {
+        font-size: 30px;
+        margin-left: -10px;
+      }
+      .nav {
+        padding: 70px 80px 20px 80px;
+      }
+      .nav h1 {
+        margin-bottom: 10px;
+      }
+      .nav p {
+        font-size: 20px;
+      }
+      .nav .btn{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .nav .btn button {
+        padding: 10px 25px;
+        border-radius: 0.5rem;
+        width: 150px;
+        font-size: 20px;
+        background-color: #0e2d3d;
+        border: 1px solid white;
+        cursor: pointer;
+      }
+      .nav .btn button a {
+        text-decoration: none;
+        color: white;
+      }
+      .about{
+        background-color: #17464d;
+        border-bottom: 1px solid white;
+        color: white;
+        padding: 20px 0px 20px 80px;
+      }
+      .members {
+        padding: 10px 50px;
+        background-color: #0e2d3d;
+        color: white;
+      }
+      .members h1 {
+        text-align: center;
+        margin: 10px 0px 20px;
+      }
+      .member-card {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .card {
+        border: 1px solid;
+        padding: 20px 30px;
+        background-color: rgb(71 101 114 / 48%);
+        margin-bottom: 30px;
+      }
+      .card img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin-bottom: 20px;
+      }
+      .card b,
+      p {
+        margin: 20px 0px;
+      }
+      .port-btn {
+        padding: 0.6em 2em;
+        border: none;
+        outline: none;
+        color: rgb(255, 255, 255);
+        background: #111;
+        cursor: pointer;
+        position: relative;
+        z-index: 0;
+        border-radius: 10px;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        width: 100%;
+      }
+
+      .port-btn:before {
+        content: "";
+        background: linear-gradient(
+          45deg,
+          #ff0000,
+          #ff7300,
+          #fffb00,
+          #48ff00,
+          #00ffd5,
+          #002bff,
+          #7a00ff,
+          #ff00c8,
+          #ff0000
+        );
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        background-size: 400%;
+        z-index: -1;
+        filter: blur(5px);
+        -webkit-filter: blur(5px);
+        width: calc(100% + 4px);
+        height: calc(100% + 4px);
+        animation: glowing-button 20s linear infinite;
+        transition: opacity 0.3s ease-in-out;
+        border-radius: 10px;
+      }
+
+      @keyframes glowing-button {
+        0% {
+          background-position: 0 0;
+        }
+        50% {
+          background-position: 400% 0;
+        }
+        100% {
+          background-position: 0 0;
+        }
+      }
+
+      .port-btn:after {
+        z-index: -1;
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #222;
+        left: 0;
+        top: 0;
+        border-radius: 10px;
+      }
+      .projects{
+        background-color: #264b51;
+        border-top: 1px solid white;
+        color: white;
+        padding: 20px 0px 20px 80px;
+      }
+      .footer {
+        display: flex;
+        justify-content: space-between;
+        border-top: 1px solid white;
+        background-color: rgb(37 87 100);
+        padding: 10px 50px;
+        color: white;
+        border-bottom-left-radius: 0.5rem;
+        border-bottom-right-radius: 0.5rem;
+      }
+      .contact {
+        flex-basis: 50%;
+      }
+      .contact h1 {
+        margin-bottom: 20px;
+      }
+      .contact form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .contact form input,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 16px;
+        outline: none;
+      }
+      .contact form button {
+        padding: 10px 20px;
+        border: none;
+        background-color: rgb(86, 20, 20);
+        color: white;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        border: 1px solid;
+        transition: all 0.4s;
+      }
+      .contact form button:hover {
+        opacity: 0.5;
+      }
+      .platforms ul {
+        list-style: none;
+      }
+      .platforms ul li {
+        margin: 20px 0px;
+        border: 1px solid white;
+        padding: 8px;
+        text-align: center;
+        background-color: #e8fff033;
+        transition: all 0.4s;
+      }
+      .platforms ul li a {
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        display: block;
+      }
+      .platforms ul li:hover {
+        opacity: 0.5;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- logo-->
+        <div class="logo">
+          <h1>
+            Code <a href="/"><img src="logo.png" alt="" /></a>Arc
+          </h1>
+        </div>
+        <!-- Welcome section  -->
+        <div class="nav">
+          <h1>Welcome to CodeArc!</h1>
+          <p>
+            We are a passionate group of coders dedicated to learning and
+            sharing knowledge. <br />
+            Explore our site to know more about us, our projects, and our team
+            members
+          </p>
+          <div class="btn">
+            <button><a href="#about">About</a></button>
+            <button><a href="#members">Members</a></button>
+            <button><a href="#project">Projects</a></button>
+            <button><a href="#contact">Contact</a></button>
+          </div>
+        </div>
+      </div>
+      <!-- About Section  -->
+      <div class="about" id="about">
+        <h1>About Us</h1>
+      </div>
+      <!-- Member section  -->
+      <div class="members" id="members">
+        <h1>Meet the Team</h1>
+        <div class="member-card">
+          <!-- Card For Each Members -->
+          <% for(let member of MemberInfo) { %>
+          <div class="card">
+            <img src="<%= member.image %>" alt="<%= member.memberno %>" />
+            <div class="member-info">
+              <b><%= member.name %></b>
+              <p>Member - <%= member.memberno %></p>
+              <p><%= member.position %></p>
+              <button class="port-btn">Portfolio</button>
+            </div>
+          </div>
+          <% } %>
+        </div>
+      </div>
+      <!-- Project Section  -->
+      <div class="projects" id="project">
+        <h1>Projects</h1>
+      </div>
+      <!-- footer section    -->
+      <div class="footer">
+        <div class="platforms">
+          <h1>Follow Us On</h1>
+          <ul class="social-links">
+            <li>
+              <a href="#">YouTube <i class="fa-brands fa-youtube"></i></a>
+            </li>
+            <li>
+              <a href="#">Instagram <i class="fa-brands fa-instagram"></i></a>
+            </li>
+            <li>
+              <a href="#">Facebook <i class="fa-brands fa-facebook"></i></a>
+            </li>
+            <li>
+              <a href="#">Twitter <i class="fa-brands fa-x-twitter"></i></a>
+            </li>
+          </ul>
+        </div>
+        <div class="contact" id="contact">
+          <h1>Contact US</h1>
+          <form action="">
+            <input type="text" placeholder="Name" />
+            <input type="number" placeholder="Number" />
+            <input type="email" placeholder="Email" />
+            <textarea placeholder="Message"></textarea>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
